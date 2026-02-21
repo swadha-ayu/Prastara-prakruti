@@ -50,9 +50,9 @@ p { margin-bottom: 20px; }
 /* Selected option */
 .option-btn.selected {
     background-color: #ffe0a3; /* subtle highlight */
-    border: 2px solid #8c6b4f;
+    border: 2px ;
     opacity: 0.4; /* fully readable */
-    font-weight: 500;
+    font-weight: 600;
 }
 
 /* Floating leaves */
