@@ -43,7 +43,7 @@ p { margin-bottom: 20px; }
 
 /* Disabled buttons except selected */
 .option-btn.disabled-not-selected {
-    opacity: 0.8;
+    opacity: 1;
     cursor: not-allowed;
 }
 
