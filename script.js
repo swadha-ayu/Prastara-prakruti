@@ -117,7 +117,7 @@ function showFinalScreen() {
     responses.forEach((item, index) => {
         html += `<b>${index+1}. ${item.question}</b><br>`;
         html += `${item.answer}<br>`;
-        html += `<a href="${item.image}" download="Prakruti_${index+1}.jpg">
+        html += `<a href="${item.image}" >
                     <img src="${item.image}" style="width:150px; border-radius:10px; margin:10px;">
                  </a><br><br>`;
     });
