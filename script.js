@@ -72,11 +72,13 @@ document.addEventListener("click", function(e){
         image.src = questions[currentQuestion].options[index].image;
         image.style.display = "block";
 
-        responses.push({
-            question: questions[currentQuestion].question,
-            answer: questions[currentQuestion].options[index].text
-        });
-
+       
+responses.push({
+    question: questions[currentQuestion].question,
+    answer: questions[currentQuestion].options[index].text,
+    image: questions[currentQuestion].options[index].image   // store image URL!
+});
+ 
         // Show next button
         const nextBtn = document.getElementById("nextBtn");
         if(nextBtn) nextBtn.style.display = "inline-block";
