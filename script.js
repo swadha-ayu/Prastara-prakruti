@@ -15,7 +15,7 @@ const questions = [
         question: "AGNI ASSESSMENT",
         options: [
             { text: "You do not feel hungry or thirsty very often. <br> You can easily tolerate delays in meals.", image: "d2a.jpg" },
-            { text: "You feel hungry and thirsty quickly <br> cannot tolerate missing meals. <br> You enjoy eating.", image: "d2b.jpg" },
+            { text: "You feel hungry and thirsty quickly.  <br> cannot tolerate missing meals. <br> You enjoy eating.", image: "d2b.jpg" },
             { text: "Your hunger and thirst are irregular. < br>  Sometimes you can tolerate delays, sometimes you cannot. <br> Your eating pattern changes often.", image: "d2c.jpg" }
         ]
     },
@@ -63,6 +63,7 @@ function loadQuestion() {
     }
 }
 
+// Handle clicks
 document.addEventListener("click", function(e){
     if(e.target && e.target.classList.contains("option-btn") && e.target.id != "nextBtn" && e.target.id != "copyBtn"){
         const index = e.target.getAttribute("data-index");
@@ -76,6 +77,12 @@ document.addEventListener("click", function(e){
             image: questions[currentQuestion].options[index].image
         });
 
+        // Disable other options
+        const buttons = document.querySelectorAll(".option-btn[data-index]");
+        buttons.forEach(btn => btn.disabled = true);
+        e.target.style.backgroundColor = "#8c6b4f"; // Highlight selected option
+
+        // Add download button if not already
         let qBox = document.getElementById("questionBox");
         if(!document.getElementById("downloadBtn")) {
             let downloadHTML = `<br><a id="downloadBtn" href="${questions[currentQuestion].options[index].image}" download="Prakruti_${currentQuestion+1}.jpg">
@@ -83,6 +90,7 @@ document.addEventListener("click", function(e){
             qBox.innerHTML += downloadHTML;
         }
 
+        // Show next button
         const nextBtn = document.getElementById("nextBtn");
         if(nextBtn) nextBtn.style.display = "inline-block";
     }
@@ -120,10 +128,3 @@ function showFinalScreen() {
 document.addEventListener("DOMContentLoaded", function() {
     loadQuestion();
 });
-
-
-
-
-
-
-
