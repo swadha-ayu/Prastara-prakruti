@@ -47,10 +47,10 @@ body {
     animation-iteration-count: infinite;
 }
 .leaf1 { left: 10%; animation-duration: 20s; animation-delay: 0s; }
-.leaf2 { left: 30%; animation-duration: 20s; animation-delay: 0s; }
-.leaf3 { left: 50%; animation-duration: 20s; animation-delay: 0s; }
-.leaf4 { left: 70%; animation-duration: 20s; animation-delay: 0s; }
-.leaf5 { left: 90%; animation-duration: 20s; animation-delay: 0s; }
+.leaf2 { left: 30%; animation-duration: 20.5s; animation-delay: 0.5s; }
+.leaf3 { left: 50%; animation-duration: 21s; animation-delay: 1s; }
+.leaf4 { left: 70%; animation-duration: 21.5s; animation-delay: 1.5s; }
+.leaf5 { left: 90%; animation-duration: 22s; animation-delay: 2s; }
 
 @keyframes floatLeaf {
     0% { transform: translateY(-60px) rotate(0deg); }
