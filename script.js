@@ -1,7 +1,4 @@
 
-let currentQuestion = 0;
-let responses = [];
-
 const questions = [
     {
         question: "PHYSICAL DIMENSION",
@@ -45,87 +42,93 @@ const questions = [
     }
 ];
 
-function loadQuestion() {
-    const qBox = document.getElementById("questionBox");
-    const image = document.getElementById("resultImage");
-    image.style.display = "none";
+let currentQuestion = 0;
+let responses = [];
 
-    if (currentQuestion < questions.length) {
-        const q = questions[currentQuestion];
-        let html = `<h3>${q.question}</h3>`;
-        html += '<div class="options-container">';
-        q.options.forEach((option, index) => {
-            html += `<button class="option-btn" data-index="${index}">${option.text}</button>`;
-        });
-        html += '</div>';
-        html += `<br><button class="option-btn" id="nextBtn" style="display:none;">Next</button>`;
-        qBox.innerHTML = html;
-    } else {
-        showFinalScreen();
+function loadQuestion() {
+    const questionEl = document.getElementById("question");
+    const optionsEl = document.getElementById("options");
+    const nextBtn = document.getElementById("nextBtn");
+    const image = document.getElementById("resultImage");
+
+    nextBtn.style.display = "none";
+    image.style.display = "none";
+    optionsEl.innerHTML = "";
+
+    if (currentQuestion >= questions.length) {
+        showDownload();
+        return;
     }
+
+    questionEl.innerText = questions[currentQuestion].question;
+
+    questions[currentQuestion].options.forEach((option, index) => {
+        const button = document.createElement("button");
+        button.className = "option-btn";
+        button.innerHTML = option.text;
+        button.setAttribute("data-index", index);
+        optionsEl.appendChild(button);
+    });
 }
 
-// Handle clicks
-document.addEventListener("click", function(e) {
-    if(e.target && e.target.classList.contains("option-btn") && e.target.id != "nextBtn" && e.target.id != "copyBtn"){
+document.addEventListener("click", function (e) {
+
+    if (e.target.classList.contains("option-btn")) {
+
         const index = e.target.getAttribute("data-index");
         const image = document.getElementById("resultImage");
+
         image.src = questions[currentQuestion].options[index].image;
         image.style.display = "block";
 
         responses.push({
             question: questions[currentQuestion].question,
-            answer: questions[currentQuestion].options[index].text,
-            image: questions[currentQuestion].options[index].image
+            answer: questions[currentQuestion].options[index].text
         });
 
-        // Disable other options
-        const buttons = document.querySelectorAll(".option-btn[data-index]");
-        buttons.forEach(btn => btn.disabled = true);
-        e.target.style.backgroundColor = "#8c6b4f"; // Highlight selected
+        const buttons = document.querySelectorAll(".option-btn");
 
-        // Add download button if not already
-        let qBox = document.getElementById("questionBox");
-        if(!document.getElementById("downloadBtn")) {
-            let downloadHTML = `<br><a id="downloadBtn" href="${questions[currentQuestion].options[index].image}" download="Prakruti_${currentQuestion+1}.jpg">
-                                <button class="option-btn">Download Image</button></a>`;
-            qBox.innerHTML += downloadHTML;
-        }
+        buttons.forEach(btn => {
+            if (btn !== e.target) {
+                btn.classList.add("disabled-not-selected");
+                btn.disabled = true;
+            } else {
+                btn.classList.add("selected");
+            }
+        });
 
-        // Show next button
-        const nextBtn = document.getElementById("nextBtn");
-        if(nextBtn) nextBtn.style.display = "inline-block";
+        document.getElementById("nextBtn").style.display = "inline-block";
     }
 
-    if(e.target && e.target.id == "nextBtn"){
+    if (e.target.id === "nextBtn") {
         currentQuestion++;
         loadQuestion();
     }
 
-    if(e.target && e.target.id == "copyBtn"){
-        let text = responses.map((r,i) => `${i+1}. ${r.question}\nSelected: ${r.answer}`).join("\n\n");
-        navigator.clipboard.writeText(text).then(() => alert("Responses copied to clipboard!"));
+    if (e.target.id === "downloadBtn") {
+        downloadResult();
     }
+
 });
 
-function showFinalScreen() {
-    const qBox = document.getElementById("questionBox");
-    const image = document.getElementById("resultImage");
-    image.style.display = "none";
-
-    let html = "<h3>Thank you for completing the assessment!</h3><br>";
-
-    responses.forEach((item, index) => {
-        html += `<b>${index+1}. ${item.question}</b><br>`;
-        html += `${item.answer}<br>`;
-        html += `<a href="${item.image}" download="Prakruti_${index+1}.jpg">
-                    <img src="${item.image}" style="width:150px; border-radius:10px; margin:10px;">
-                 </a><br><br>`;
-    });
-
-    html += `<button id="copyBtn">Copy My Responses</button>`;
-    qBox.innerHTML = html;
+function showDownload() {
+    document.getElementById("question").innerText = "Quiz Completed!";
+    document.getElementById("options").innerHTML = "";
+    document.getElementById("nextBtn").style.display = "none";
+    document.getElementById("downloadBtn").style.display = "inline-block";
 }
 
-document.addEventListener("DOMContentLoaded", loadQuestion);
+function downloadResult() {
+    let text = "Prakruti Pariksha Result\n\n";
+    responses.forEach(r => {
+        text += r.question + "\n" + r.answer + "\n\n";
+    });
 
+    const blob = new Blob([text], { type: "text/plain" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "Prakruti_Result.txt";
+    link.click();
+}
+
+loadQuestion();
