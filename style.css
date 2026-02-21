@@ -11,20 +11,6 @@ body {
 }
 
 /* Buttons */
-.option-btn {
-    background-color: #c1a17f;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 15px;
-    margin: 5px;
-    cursor: pointer;
-    font-weight: bold;
-}
-.option-btn:hover {
-    background-color: #b08c63;
-}
-
 .options-container {
     display: flex;
     flex-direction: column;   /* stack buttons vertically */
