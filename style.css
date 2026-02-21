@@ -10,16 +10,13 @@ body {
 h2 { margin-bottom: 5px; }
 p { margin-bottom: 20px; }
 
-/* Buttons */
-/* Container for stacking options */
 .options-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: column;   /* stack vertically */
     align-items: center;
     gap: 12px;
 }
 
-/* All option buttons */
 .option-btn {
     display: block;
     width: 90%;
@@ -33,27 +30,24 @@ p { margin-bottom: 20px; }
     line-height: 1.4em;
     font-size: 14px;
     word-wrap: break-word;
-    transition: background-color 0.3s, opacity 0.3s;
 }
 
-/* Hover effect */
 .option-btn:hover:not(:disabled) {
     background-color: #f2e4d7;
 }
 
-/* Disabled buttons except selected */
-.option-btn.disabled-not-selected {
-    opacity: 1;
+.option-btn:disabled {
+    opacity: 0.6;
     cursor: not-allowed;
 }
 
-/* Selected option */
-.option-btn.selected {
-    background-color: #ffe0a3; /* subtle highlight */
-    border: 2px ;
-    opacity: 0.4; /* fully readable */
-    font-weight: 600;
+#resultImage {
+    margin-top: 20px;
+    max-width: 90%;
+    border-radius: 10px;
+    border: 2px solid #8c6b4f;
 }
+
 
 /* Floating leaves */
 .floating-leaves {
