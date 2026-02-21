@@ -46,7 +46,6 @@ const questions = [
 ];
 
 
-
 function loadQuestion() {
     const qBox = document.getElementById("questionBox");
     const image = document.getElementById("resultImage");
@@ -55,19 +54,17 @@ function loadQuestion() {
     if (currentQuestion < questions.length) {
         const q = questions[currentQuestion];
         let html = `<h3>${q.question}</h3>`;
-html += '<div class="options-container">';
-q.options.forEach((option, index) => {
-    html += `<button class="option-btn" data-index="${index}">${option.text}</button>`;
-});
-html += '</div>';
-html += `<br><button class="option-btn" id="nextBtn" style="display:none;">Next</button>`;
-qBox.innerHTML = html;
-       
+        html += '<div class="options-container">'; // start container
+        q.options.forEach((option, index) => {
+            html += `<button class="option-btn" data-index="${index}">${option.text}</button>`;
+        });
+        html += '</div>'; // end container
+        html += `<br><button class="option-btn" id="nextBtn" style="display:none;">Next</button>`;
+        qBox.innerHTML = html;
     } else {
         showFinalScreen();
     }
 }
-
 
 // Handle clicks
 document.addEventListener("click", function(e) {
