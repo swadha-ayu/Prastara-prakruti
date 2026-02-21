@@ -1,36 +1,36 @@
 
-/* Body & theme */
 body {
     font-family: 'Georgia', serif;
-    background: #fff8f0;
-    color: #4b3b2a;
+    background: #f8f3eb;
+    padding: 15px;
     text-align: center;
-    padding: 20px;
-    position: relative;
-    overflow-x: hidden;
+    color: #4a3c31;
 }
 
+h2 { margin-bottom: 5px; }
+p { margin-bottom: 20px; }
+
 /* Buttons */
-.options-container {
+.option-container {
     display: flex;
-    flex-direction: column;   /* vertical stacking */
-    align-items: center;      /* center horizontally */
-    gap: 12px;                /* space between buttons */
+    flex-direction: column;   /* stack vertically */
+    align-items: center;
+    gap: 12px;
 }
 
 .option-btn {
-    display: block;           /* ensures proper block layout */
-    width: 90%;               /* responsive width */
-    max-width: 400px;         /* prevent too wide on desktop */
+    display: block;
+    width: 90%;
+    max-width: 400px;
     padding: 12px 15px;
     border-radius: 10px;
     border: 1px solid #8c6b4f;
     background-color: #fff7ee;
     cursor: pointer;
-    text-align: left;         /* align option text */
+    text-align: left;
     line-height: 1.4em;
     font-size: 14px;
-    word-wrap: break-word;    /* ensures long text wraps */
+    word-wrap: break-word;
 }
 
 .option-btn:hover:not(:disabled) {
@@ -44,10 +44,10 @@ body {
 
 /* Question image */
 #resultImage {
-    display: none;
-    max-width: 300px;
-    border-radius: 10px;
     margin-top: 20px;
+    max-width: 90%;
+    border-radius: 10px;
+    border: 2px solid #8c6b4f;
 }
 
 /* Floating leaves */
