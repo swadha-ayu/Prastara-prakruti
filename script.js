@@ -6,41 +6,41 @@ const questions = [
     {
         question: "PHYSICAL DIMENSION",
         options: [
-            { text: "Your skin feels soft and smooth. You have a fair complexion, black curly hair, and dark eyes.(Kapha)", image: "images/d1a.jpg" },
-            { text: "You tend to have moles, marks, or freckles. Your skin is soft, glowing, and fair.(Pitta)", image: "images/d1b.jpg" },
-            { text: "Your skin and hair feel rough. Your limbs are long, joints move easily, and bones, veins, or tendons are clearly visible.(Vata)", image: "images/d1c.jpg" }
+            { text: "Your skin feels soft and smooth. You have a fair complexion, black curly hair, and dark eyes.(Kapha)", image: "d1a.jpg" },
+            { text: "You tend to have moles, marks, or freckles. Your skin is soft, glowing, and fair.(Pitta)", image: "d1b.jpg" },
+            { text: "Your skin and hair feel rough. Your limbs are long, joints move easily, and bones, veins, or tendons are clearly visible.(Vata)", image: "d1c.jpg" }
         ]
     },
     {
         question: "AGNI ASSESSMENT",
         options: [
-            { text: "You do not feel hungry or thirsty very often. You can easily tolerate delays in meals.", image: "images/d2a.jpg" },
-            { text: "You feel hungry and thirsty quickly and cannot tolerate missing meals. You enjoy eating.", image: "images/d2b.jpg" },
-            { text: "Your hunger and thirst are irregular. Sometimes you can tolerate delays, sometimes you cannot. Your eating pattern changes often.", image: "images/d2c.jpg" }
+            { text: "You do not feel hungry or thirsty very often. You can easily tolerate delays in meals.", image: "d2a.jpg" },
+            { text: "You feel hungry and thirsty quickly and cannot tolerate missing meals. You enjoy eating.", image: "d2b.jpg" },
+            { text: "Your hunger and thirst are irregular. Sometimes you can tolerate delays, sometimes you cannot. Your eating pattern changes often.", image: "d2c.jpg" }
         ]
     },
     {
         question: "BEHAVIOURAL DIMENSION 1",
         options: [
-            { text: "You take time to start tasks and prefer a steady pace. You may take longer to understand things but remember them well", image: "images/d3a.jpg" },
-            { text: "You plan your work carefully. You have sharp understanding and strong intelligence", image: "images/d3b.jpg" },
-            { text: "You get excited easily and want to participate in many activities. You understand quickly but may forget things sooner.", image: "images/d3c.jpg" }
+            { text: "You take time to start tasks and prefer a steady pace. You may take longer to understand things but remember them well", image: "d3a.jpg" },
+            { text: "You plan your work carefully. You have sharp understanding and strong intelligence", image: "d3b.jpg" },
+            { text: "You get excited easily and want to participate in many activities. You understand quickly but may forget things sooner.", image: "d3c.jpg" }
         ]
     },
     {
         question: "BEHAVIOURAL DIMENSION 2",
         options: [
-            { text: "You prefer being alone, speak less, and move slowly. You are calm and rarely get angry.", image: "images/d4a.jpg" },
-            { text: "You socialize when necessary. You are courageous and confident but may get angry easily.", image: "images/d4b.jpg" },
-            { text: "You are outgoing and talkative. You walk and eat quickly. You may experience mood changes and prefer expressing yourself verbally.", image: "images/d4c.jpg" }
+            { text: "You prefer being alone, speak less, and move slowly. You are calm and rarely get angry.", image: "d4a.jpg" },
+            { text: "You socialize when necessary. You are courageous and confident but may get angry easily.", image: "d4b.jpg" },
+            { text: "You are outgoing and talkative. You walk and eat quickly. You may experience mood changes and prefer expressing yourself verbally.", image: "d4c.jpg" }
         ]
     },
     {
         question: "PHYSIOLOGICAL DIMENSION",
         options: [
-            { text: "You sweat more but the smell is mild.", image: "images/d5a.jpg" },
-            { text: "You sweat more and the smell is strong. You cannot tolerate heat well. You pass urine and stool in larger quantities.", image: "images/d5b.jpg" },
-            { text: "You sweat very little and cannot tolerate cold. You pass urine frequently and may often experience constipation.", image: "images/d5c.jpg" }
+            { text: "You sweat more but the smell is mild.", image: "d5a.jpg" },
+            { text: "You sweat more and the smell is strong. You cannot tolerate heat well. You pass urine and stool in larger quantities.", image: "d5b.jpg" },
+            { text: "You sweat very little and cannot tolerate cold. You pass urine frequently and may often experience constipation.", image: "d5c.jpg" }
         ]
     }
 ];
