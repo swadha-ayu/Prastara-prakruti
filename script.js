@@ -102,10 +102,12 @@ function showFinalScreen() {
     image.style.display = "none";
 
     let html = "<h3>Thank you for completing the assessment!</h3><br>";
-    responses.forEach((item, index) => {
-        html += `<b>${index+1}. ${item.question}</b><br>`;
-        html += `${item.answer}<br><br>`;
-    });
+    
+responses.forEach((item, index) => {
+    html += `<b>${index+1}. ${item.question}</b><br>`;
+    html += `${item.answer}<br>`;
+    html += `<img src="${item.image}" style="width:150px; border-radius:10px; margin:10px;"><br><br>`;
+});
 
     html += `<button id="copyBtn">Copy My Responses</button>`;
     qBox.innerHTML = html;
