@@ -47,6 +47,9 @@ const questions = [
 
 
 
+
+
+
 function loadQuestion() {
     const qBox = document.getElementById("questionBox");
     const image = document.getElementById("resultImage");
