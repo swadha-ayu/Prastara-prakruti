@@ -1,53 +1,97 @@
-
 body {
-    font-family: 'Georgia', serif;
-    background: #f8f3eb;
-    padding: 15px;
+    font-family: Arial, sans-serif;
+    background: #f4f1ea;
+    margin: 0;
+    padding: 0;
     text-align: center;
-    color: #4a3c31;
 }
 
-h2 { margin-bottom: 5px; }
-p { margin-bottom: 20px; }
+.container {
+    max-width: 500px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+}
 
-.options-container {
+.title {
+    color: #5b3a29;
+}
+
+#question {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#options {
     display: flex;
-    flex-direction: column;   /* stack vertically */
-    align-items: center;
+    flex-direction: column;   /* One below the other */
     gap: 12px;
 }
 
 .option-btn {
-    display: block;
-    width: 90%;
-    max-width: 400px;
-    padding: 12px 15px;
-    border-radius: 10px;
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 8px;
     border: 1px solid #8c6b4f;
-    background-color: #fff7ee;
+    background-color: #fff7e6;
     cursor: pointer;
-    text-align: left;
-    line-height: 1.4em;
-    font-size: 14px;
-    word-wrap: break-word;
+    transition: 0.3s;
+    white-space: normal;      /* Allows long text wrapping */
 }
 
-.option-btn:hover:not(:disabled) {
-    background-color: #f2e4d7;
+.option-btn:hover {
+    background-color: #ffe0a3;
 }
 
-.option-btn:disabled {
-    opacity: 0.6;
+.option-btn.selected {
+    background-color: #ffe0a3;
+    border: 2px solid #8c6b4f;
+    font-weight: bold;
+    opacity: 1;
+}
+
+.option-btn.disabled-not-selected {
+    opacity: 0.5;
     cursor: not-allowed;
 }
 
 #resultImage {
+    width: 200px;
     margin-top: 20px;
-    max-width: 90%;
-    border-radius: 10px;
-    border: 2px solid #8c6b4f;
+    display: none;
+    border-radius: 8px;
 }
 
+.button-row {
+    margin-top: 20px;
+}
+
+.nav-btn {
+    padding: 10px 20px;
+    background-color: #8c6b4f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: none;
+}
+
+.download-row {
+    margin-top: 30px;  /* Proper spacing from Next button */
+}
+
+#downloadBtn {
+    padding: 10px 20px;
+    background-color: #4a7c59;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: none;
+}
 
 /* Floating leaves */
 .floating-leaves {
@@ -79,5 +123,4 @@ p { margin-bottom: 20px; }
 
 /* Main content on top of leaves */
 .main-content { position: relative; z-index: 1; }
-
 

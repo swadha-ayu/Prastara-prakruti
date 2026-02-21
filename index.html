@@ -1,10 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prastara Prakruti - Assessment and health</title>
+    <meta charset="UTF-8">
+    <title>Prastara Prakruti - Assessment and health</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -35,9 +33,22 @@ Each text in option provides the criteria to be assessed by the person. <br> The
  Select the option that matches maximum to your personality.
 </p>
     
-<div id="questionBox"></div>
+    
+    <div id="quizBox">
+        <h2 id="question"></h2>
+        <div id="options"></div>
 
-<img id="resultImage" src="" alt="Result Image" style="display:none;">
+        <img id="resultImage" />
+
+        <div class="button-row">
+            <button id="nextBtn" class="nav-btn">Next</button>
+        </div>
+
+        <div class="download-row">
+            <button id="downloadBtn">Download Result</button>
+        </div>
+    </div>
+</div>
 
 <script src="script.js"></script>
 </body>
