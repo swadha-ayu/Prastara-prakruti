@@ -1,4 +1,3 @@
-
 const questions = [
     {
         question: "PHYSICAL DIMENSION",
@@ -42,10 +41,12 @@ const questions = [
     }
 ];
 
+
 let currentQuestion = 0;
 let responses = [];
 
 function loadQuestion() {
+
     const questionEl = document.getElementById("question");
     const optionsEl = document.getElementById("options");
     const nextBtn = document.getElementById("nextBtn");
@@ -56,7 +57,7 @@ function loadQuestion() {
     optionsEl.innerHTML = "";
 
     if (currentQuestion >= questions.length) {
-        showDownload();
+        showFinalResult();
         return;
     }
 
@@ -83,15 +84,16 @@ document.addEventListener("click", function (e) {
 
         responses.push({
             question: questions[currentQuestion].question,
-            answer: questions[currentQuestion].options[index].text
+            answer: questions[currentQuestion].options[index].text,
+            image: questions[currentQuestion].options[index].image
         });
 
         const buttons = document.querySelectorAll(".option-btn");
 
         buttons.forEach(btn => {
             if (btn !== e.target) {
-                btn.classList.add("disabled-not-selected");
                 btn.disabled = true;
+                btn.classList.add("disabled-not-selected");
             } else {
                 btn.classList.add("selected");
             }
@@ -104,31 +106,37 @@ document.addEventListener("click", function (e) {
         currentQuestion++;
         loadQuestion();
     }
-
-    if (e.target.id === "downloadBtn") {
-        downloadResult();
-    }
-
 });
 
-function showDownload() {
-    document.getElementById("question").innerText = "Quiz Completed!";
-    document.getElementById("options").innerHTML = "";
-    document.getElementById("nextBtn").style.display = "none";
-    document.getElementById("downloadBtn").style.display = "inline-block";
-}
+function showFinalResult() {
 
-function downloadResult() {
-    let text = "Prakruti Pariksha Result\n\n";
+    const questionEl = document.getElementById("question");
+    const optionsEl = document.getElementById("options");
+    const image = document.getElementById("resultImage");
+    const nextBtn = document.getElementById("nextBtn");
+
+    questionEl.innerHTML = "🙏 Thank You for Completing Prakruti Pariksha 🙏";
+    optionsEl.innerHTML = "";
+    image.style.display = "none";
+    nextBtn.style.display = "none";
+
     responses.forEach(r => {
-        text += r.question + "\n" + r.answer + "\n\n";
-    });
 
-    const blob = new Blob([text], { type: "text/plain" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "Prakruti_Result.txt";
-    link.click();
+        const block = document.createElement("div");
+        block.style.marginBottom = "25px";
+
+        block.innerHTML = `
+            <h3>${r.question}</h3>
+            <p><strong>Selected:</strong> ${r.answer}</p>
+            <img src="${r.image}" style="width:180px; border-radius:8px; margin-top:10px;">
+        `;
+
+        optionsEl.appendChild(block);
+    });
 }
 
 loadQuestion();
+
+
+
+
