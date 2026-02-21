@@ -63,53 +63,55 @@ function loadQuestion() {
     }
 }
 
-// Handle clicks
 document.addEventListener("click", function(e){
-    // Option clicked
-    if(e.target && e.target.classList.contains("option-btn") && e.target.id != "nextBtn"){
+    if(e.target && e.target.classList.contains("option-btn") && e.target.id != "nextBtn" && e.target.id != "copyBtn"){
         const index = e.target.getAttribute("data-index");
         const image = document.getElementById("resultImage");
         image.src = questions[currentQuestion].options[index].image;
         image.style.display = "block";
 
-       
-responses.push({
-    question: questions[currentQuestion].question,
-    answer: questions[currentQuestion].options[index].text,
-    image: questions[currentQuestion].options[index].image   // store image URL!
-});
- 
-        // Show next button
+        responses.push({
+            question: questions[currentQuestion].question,
+            answer: questions[currentQuestion].options[index].text,
+            image: questions[currentQuestion].options[index].image
+        });
+
+        let qBox = document.getElementById("questionBox");
+        if(!document.getElementById("downloadBtn")) {
+            let downloadHTML = `<br><a id="downloadBtn" href="${questions[currentQuestion].options[index].image}" download="Prakruti_${currentQuestion+1}.jpg">
+                                <button class="option-btn">Download Image</button></a>`;
+            qBox.innerHTML += downloadHTML;
+        }
+
         const nextBtn = document.getElementById("nextBtn");
         if(nextBtn) nextBtn.style.display = "inline-block";
     }
 
-    // Next button clicked
     if(e.target && e.target.id == "nextBtn"){
         currentQuestion++;
         loadQuestion();
     }
 
-    // Copy responses clicked
     if(e.target && e.target.id == "copyBtn"){
         let text = responses.map((r,i) => `${i+1}. ${r.question}\nSelected: ${r.answer}`).join("\n\n");
         navigator.clipboard.writeText(text).then(() => alert("Responses copied to clipboard!"));
     }
 });
 
-// Show final screen
 function showFinalScreen() {
     const qBox = document.getElementById("questionBox");
     const image = document.getElementById("resultImage");
     image.style.display = "none";
 
     let html = "<h3>Thank you for completing the assessment!</h3><br>";
-    
-responses.forEach((item, index) => {
-    html += `<b>${index+1}. ${item.question}</b><br>`;
-    html += `${item.answer}<br>`;
-    html += `<img src="${item.image}" style="width:150px; border-radius:10px; margin:10px;"><br><br>`;
-});
+
+    responses.forEach((item, index) => {
+        html += `<b>${index+1}. ${item.question}</b><br>`;
+        html += `${item.answer}<br>`;
+        html += `<a href="${item.image}" download="Prakruti_${index+1}.jpg">
+                    <img src="${item.image}" style="width:150px; border-radius:10px; margin:10px;">
+                 </a><br><br>`;
+    });
 
     html += `<button id="copyBtn">Copy My Responses</button>`;
     qBox.innerHTML = html;
@@ -118,4 +120,10 @@ responses.forEach((item, index) => {
 document.addEventListener("DOMContentLoaded", function() {
     loadQuestion();
 });
+
+
+
+
+
+
 

@@ -1,74 +1,66 @@
-
+/* Body & theme */
 body {
-    margin: 0;
     font-family: 'Georgia', serif;
-    background: linear-gradient(to bottom, #f5f1e8, #e8dfc8);
+    background: #fff8f0;
+    color: #4b3b2a;
     text-align: center;
+    padding: 20px;
+    position: relative;
     overflow-x: hidden;
 }
 
-.container {
-    background: rgba(255, 255, 255, 0.85);
-    width: 90%;
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    position: relative;
-    z-index: 1;
-}
-
-h1 { color: #6b8e23; font-size:28px; margin-bottom:10px; }
-h3 { color: #8b4513; }
-
+/* Buttons */
 .option-btn {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
-    padding: 12px;
+    background-color: #c1a17f;
+    color: #fff;
     border: none;
-    border-radius: 12px;
-    background-color: #a67c52;
-    color: white;
-    font-size: 14px;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin: 5px;
     cursor: pointer;
-    transition: 0.3s;
+    font-weight: bold;
+}
+.option-btn:hover {
+    background-color: #b08c63;
 }
 
-.option-btn:hover { background-color: #6b8e23; transform: scale(1.03); }
-
+/* Question image */
 #resultImage {
-    margin-top: 15px;
-    width: 220px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    display: none;
+    max-width: 300px;
+    border-radius: 10px;
+    margin-top: 20px;
 }
 
-.leaf {
-    top: -120px;
-    width: 50px;
-    opacity: 0.5;
+/* Floating leaves */
+.floating-leaves {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     pointer-events: none;
-    z-index: -1;
-    animation: floatLeaf 18s linear infinite;
+    z-index: 0;
 }
+.floating-leaves img.leaf {
+    position: absolute;
+    width: 50px;
+    opacity: 0.7;
+    animation-name: floatLeaf;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+.leaf1 { left: 10%; animation-duration: 20s; animation-delay: 0s; }
+.leaf2 { left: 30%; animation-duration: 25s; animation-delay: 5s; }
+.leaf3 { left: 50%; animation-duration: 22s; animation-delay: 2s; }
+.leaf4 { left: 70%; animation-duration: 28s; animation-delay: 3s; }
+.leaf5 { left: 90%; animation-duration: 24s; animation-delay: 1s; }
 
 @keyframes floatLeaf {
-    0% { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(130vh) rotate(360deg); }
+    0% { transform: translateY(-60px) rotate(0deg); }
+    50% { transform: translateY(50vh) rotate(180deg); }
+    100% { transform: translateY(100vh) rotate(360deg); }
 }
 
-#copyBtn {
-    margin-top: 20px;
-    padding: 12px 25px;
-    background-color: #6b8e23;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-size: 16px;
-    cursor: pointer;
-}
+/* Main content on top of leaves */
+.main-content { position: relative; z-index: 1; }
 
-#copyBtn:hover { background-color: #a67c52; }
 
