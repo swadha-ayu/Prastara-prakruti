@@ -45,18 +45,67 @@ const questions = [
     }
 ];
 
+
+let currentQuestion = 0;
+let responses = [];
+
+const questions = [
+    {
+        question: "PHYSICAL DIMENSION",
+        options: [
+            { text: "Your skin feels soft and smooth.<br>Fair complexion, black curly hair, and dark eyes. (Kapha)", image: "images/d1a.jpg" },
+            { text: "You tend to have moles, marks, or freckles.<br>Skin is soft, glowing, and fair. (Pitta)", image: "images/d1b.jpg" },
+            { text: "Your skin and hair feel rough.<br>Limbs long, joints move easily, bones/veins/tendons visible. (Vata)", image: "images/d1c.jpg" }
+        ]
+    },
+    {
+        question: "AGNI ASSESSMENT",
+        options: [
+            { text: "You do not feel hungry or thirsty often.<br>Can tolerate meal delays easily.", image: "images/d2a.jpg" },
+            { text: "You feel hungry and thirsty quickly.<br>Cannot tolerate missing meals, enjoy eating.", image: "images/d2b.jpg" },
+            { text: "Hunger and thirst are irregular.<br>Sometimes tolerable, sometimes not.", image: "images/d2c.jpg" }
+        ]
+    },
+    {
+        question: "BEHAVIOURAL DIMENSION 1",
+        options: [
+            { text: "You take time to start tasks and prefer a steady pace.<br>May take longer to understand things but remember them well.", image: "images/d3a.jpg" },
+            { text: "You plan your work carefully.<br>You have sharp understanding and strong intelligence.", image: "images/d3b.jpg" },
+            { text: "You get excited easily and want to participate in many activities.<br>Understand quickly but may forget things sooner.", image: "images/d3c.jpg" }
+        ]
+    },
+    {
+        question: "BEHAVIOURAL DIMENSION 2",
+        options: [
+            { text: "You prefer being alone, speak less, and move slowly.<br>Calm and rarely get angry.", image: "images/d4a.jpg" },
+            { text: "You socialize when necessary.<br>Courageous, confident, but may get angry easily.", image: "images/d4b.jpg" },
+            { text: "Outgoing and talkative.<br>Walk and eat quickly, may experience mood changes, prefer verbal expression.", image: "images/d4c.jpg" }
+        ]
+    },
+    {
+        question: "PHYSIOLOGICAL DIMENSION",
+        options: [
+            { text: "You sweat more but smell is mild.", image: "images/d5a.jpg" },
+            { text: "Sweat more, strong smell.<br>Poor heat tolerance, pass more urine and stool.", image: "images/d5b.jpg" },
+            { text: "Sweat very little, poor cold tolerance.<br>Frequent urination, often constipated.", image: "images/d5c.jpg" }
+        ]
+    }
+];
+
 function loadQuestion() {
     const qBox = document.getElementById("questionBox");
     const image = document.getElementById("resultImage");
     image.style.display = "none";
 
     if (currentQuestion < questions.length) {
-        let q = questions[currentQuestion];
+        const q = questions[currentQuestion];
         let html = `<h3>${q.question}</h3>`;
+        html += '<div class="options-container">';
         q.options.forEach((option, index) => {
             html += `<button class="option-btn" data-index="${index}">${option.text}</button>`;
         });
-        html += `<br><br><button class="option-btn" id="nextBtn" style="display:none;">Next</button>`;
+        html += '</div>';
+        html += `<br><button class="option-btn" id="nextBtn" style="display:none;">Next</button>`;
         qBox.innerHTML = html;
     } else {
         showFinalScreen();
@@ -64,7 +113,7 @@ function loadQuestion() {
 }
 
 // Handle clicks
-document.addEventListener("click", function(e){
+document.addEventListener("click", function(e) {
     if(e.target && e.target.classList.contains("option-btn") && e.target.id != "nextBtn" && e.target.id != "copyBtn"){
         const index = e.target.getAttribute("data-index");
         const image = document.getElementById("resultImage");
@@ -80,7 +129,7 @@ document.addEventListener("click", function(e){
         // Disable other options
         const buttons = document.querySelectorAll(".option-btn[data-index]");
         buttons.forEach(btn => btn.disabled = true);
-        e.target.style.backgroundColor = "#8c6b4f"; // Highlight selected option
+        e.target.style.backgroundColor = "#8c6b4f"; // Highlight selected
 
         // Add download button if not already
         let qBox = document.getElementById("questionBox");
@@ -125,6 +174,4 @@ function showFinalScreen() {
     qBox.innerHTML = html;
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    loadQuestion();
-});
+document.addEventListener("DOMContentLoaded", loadQuestion);
