@@ -66,37 +66,35 @@ function loadQuestion() {
     }
 }
 
-// Handle clicks
-document.addEventListener("click", function(e) {
-    if(e.target && e.target.classList.contains("option-btn") && e.target.id != "nextBtn" && e.target.id != "copyBtn"){
-        const index = e.target.getAttribute("data-index");
-        const image = document.getElementById("resultImage");
-        image.src = questions[currentQuestion].options[index].image;
-        image.style.display = "block";
+if(e.target && e.target.classList.contains("option-btn") && e.target.id != "nextBtn"){
+    const index = e.target.getAttribute("data-index");
+    const image = document.getElementById("resultImage");
+    image.src = questions[currentQuestion].options[index].image;
+    image.style.display = "block";
 
-        responses.push({
-            question: questions[currentQuestion].question,
-            answer: questions[currentQuestion].options[index].text,
-            image: questions[currentQuestion].options[index].image
-        });
+    responses.push({
+        question: questions[currentQuestion].question,
+        answer: questions[currentQuestion].options[index].text,
+        image: questions[currentQuestion].options[index].image
+    });
 
-        // Disable other options
-        const buttons = document.querySelectorAll(".option-btn[data-index]");
-        buttons.forEach(btn => btn.disabled = true);
-        e.target.style.backgroundColor = "#8c6b4f"; // Highlight selected
-
-        // Add download button if not already
-        let qBox = document.getElementById("questionBox");
-        if(!document.getElementById("downloadBtn")) {
-            let downloadHTML = `<br><a id="downloadBtn" href="${questions[currentQuestion].options[index].image}" download="Prakruti_${currentQuestion+1}.jpg">
-                                <button class="option-btn">Download Image</button></a>`;
-            qBox.innerHTML += downloadHTML;
+    // Disable all options except selected
+    const buttons = document.querySelectorAll(".option-btn[data-index]");
+    buttons.forEach(btn => {
+        if(btn !== e.target){
+            btn.classList.add("disabled-not-selected");
+            btn.disabled = true;
+        } else {
+            btn.classList.add("selected"); // highlight selected
         }
+    });
 
-        // Show next button
-        const nextBtn = document.getElementById("nextBtn");
-        if(nextBtn) nextBtn.style.display = "inline-block";
-    }
+    // Show next button
+    const nextBtn = document.getElementById("nextBtn");
+    if(nextBtn) nextBtn.style.display = "inline-block";
+}
+
+
 
     if(e.target && e.target.id == "nextBtn"){
         currentQuestion++;
