@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, sans-serif;
     background: #f4f1ea;
@@ -93,6 +94,7 @@ body {
     display: none;
 }
 
+
 /* Floating leaves */
 .floating-leaves {
     position: fixed;
@@ -123,4 +125,7 @@ body {
 
 /* Main content on top of leaves */
 .main-content { position: relative; z-index: 1; }
+
+
+
 
