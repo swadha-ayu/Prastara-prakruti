@@ -16,7 +16,7 @@ const questions = [
         options: [
             { text: "You do not feel hungry or thirsty very often. <br> You can easily tolerate delays in meals.", image: "d2a.jpg" },
             { text: "You feel hungry and thirsty quickly.  <br> cannot tolerate missing meals. <br> You enjoy eating.", image: "d2b.jpg" },
-            { text: "Your hunger and thirst are irregular. < br>  Sometimes you can tolerate delays, sometimes you cannot. <br> Your eating pattern changes often.", image: "d2c.jpg" }
+            { text: "Your hunger and thirst are irregular. <br>  Sometimes you can tolerate delays, sometimes you cannot. <br> Your eating pattern changes often.", image: "d2c.jpg" }
         ]
     },
     {
@@ -100,17 +100,22 @@ function loadQuestion() {
     if (currentQuestion < questions.length) {
         const q = questions[currentQuestion];
         let html = `<h3>${q.question}</h3>`;
-        html += '<div class="options-container">';
-        q.options.forEach((option, index) => {
-            html += `<button class="option-btn" data-index="${index}">${option.text}</button>`;
-        });
-        html += '</div>';
-        html += `<br><button class="option-btn" id="nextBtn" style="display:none;">Next</button>`;
-        qBox.innerHTML = html;
+html += '<div class="options-container">';
+q.options.forEach((option, index) => {
+    html += `<button class="option-btn" data-index="${index}">${option.text}</button>`;
+});
+html += '</div>';
+html += `<br><button class="option-btn" id="nextBtn" style="display:none;">Next</button>`;
+qBox.innerHTML = html;
+       
     } else {
         showFinalScreen();
     }
 }
+
+
+
+
 
 // Handle clicks
 document.addEventListener("click", function(e) {

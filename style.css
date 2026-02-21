@@ -25,6 +25,36 @@ body {
     background-color: #b08c63;
 }
 
+.options-container {
+    display: flex;
+    flex-direction: column;   /* stack buttons vertically */
+    align-items: center;      /* center horizontally */
+    gap: 12px;                /* space between buttons */
+}
+
+.option-btn {
+    display: block;           /* ensures buttons are full width of container */
+    width: 90%;               /* buttons take 90% of screen width */
+    max-width: 400px;         /* prevents too wide on large screens */
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 1px solid #8c6b4f;
+    background-color: #fff7ee;
+    cursor: pointer;
+    text-align: left;         /* option text aligned left */
+    line-height: 1.4em;
+    font-size: 14px;
+}
+
+.option-btn:hover:not(:disabled) {
+    background-color: #f2e4d7;
+}
+
+.option-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 /* Question image */
 #resultImage {
     display: none;
