@@ -35,8 +35,8 @@ const questions = [
         question: "PHYSIOLOGICAL DIMENSION",
         options: [
             { text: "You sweat less. Can tolerate heat.", image: "d5a.jpg" },
-            { text: "You sweat more and the smell is strong. <br>  You cannot tolerate heat well. <br> You pass urine and stool in larger quantities.", image: "d5b.jpg" },
-            { text: "You sweat very little and cannot tolerate cold. <br> You pass urine frequently <br> You may often experience constipation.", image: "d5c.jpg" }
+            { text: "You sweat more and the smell is strong. <br>  You cannot tolerate heat well. <br> You pass urine and stool in larger amount.", image: "d5b.jpg" },
+            { text: "You cannot tolerate cold. <br> You pass less amount  of stool and urine, the frequency  might be increased", image: "d5c.jpg" }
         ]
     }
 ];
